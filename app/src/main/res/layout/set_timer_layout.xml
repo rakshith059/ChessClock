@@ -8,7 +8,7 @@
         android:id="@+id/set_timer_layout_rg_timer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/size_10dp"
         android:orientation="vertical">
 
         <RadioButton
@@ -41,10 +41,10 @@
             android:id="@+id/set_timer_layout_tv_player_one_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/size_10dp"
             android:text="@string/player_one"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
+            android:textSize="@dimen/size_16sp"
             android:textStyle="bold"
             android:visibility="gone" />
 
@@ -54,11 +54,11 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_time_in_minute">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/set_timer_layout_et_time1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/size_10dp"
                 android:inputType="number"
                 android:maxLength="2"
                 android:padding="10dp" />
@@ -71,14 +71,14 @@
             android:hint="@string/enter_increment_time_in_sec"
             android:visibility="gone">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/set_timer_layout_et_increment_time1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/size_10dp"
                 android:inputType="number"
                 android:maxLength="2"
-                android:padding="10dp" />
+                android:padding="@dimen/size_10dp" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 
@@ -92,10 +92,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/size_10dp"
             android:text="@string/player_two"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
+            android:textSize="@dimen/size_16sp"
             android:textStyle="bold" />
 
         <android.support.design.widget.TextInputLayout
@@ -104,14 +104,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_time_in_minute">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/set_timer_layout_et_time2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/size_10dp"
                 android:inputType="number"
                 android:maxLength="2"
-                android:padding="10dp" />
+                android:padding="@dimen/size_10dp" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -120,14 +120,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/enter_increment_time_in_sec">
 
-            <EditText
+            <android.support.design.widget.TextInputEditText
                 android:id="@+id/set_timer_layout_et_increment_time2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/size_10dp"
                 android:inputType="number"
                 android:maxLength="2"
-                android:padding="10dp" />
+                android:padding="@dimen/size_10dp" />
         </android.support.design.widget.TextInputLayout>
     </LinearLayout>
 </LinearLayout>

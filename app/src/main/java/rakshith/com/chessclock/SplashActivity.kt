@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun nextActivity() {
-        var intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NO_HISTORY
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         startActivity(intent)

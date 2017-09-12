@@ -6,6 +6,7 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
@@ -19,7 +20,9 @@ import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.RadioGroup
 
-
+/**
+ * Created ChessClock by rakshith on 9/11/17.
+ */
 class MainActivity : AppCompatActivity() {
 
     var ONE_SECOND: Long = 1000
@@ -53,13 +56,13 @@ class MainActivity : AppCompatActivity() {
     var llTimerPlayer2: LinearLayout? = null
 
     var tvPlayerOne: TextView? = null
-    var etTime1: EditText? = null
+    var etTime1: TextInputEditText? = null
     var tilTime1: TextInputLayout? = null
-    var etIncrementTime1: EditText? = null
+    var etIncrementTime1: TextInputEditText? = null
     var tilIncrementTime1: TextInputLayout? = null
-    var etTime2: EditText? = null
+    var etTime2: TextInputEditText? = null
     var tilTime2: TextInputLayout? = null
-    var etIncrementTime2: EditText? = null
+    var etIncrementTime2: TextInputEditText? = null
     var tilIncrementTime2: TextInputLayout? = null
     var rgTimer: RadioGroup? = null
     var rbNormalTimer: RadioButton? = null
@@ -113,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                 mediaPlayer?.release()
             }
 
-            var intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -148,8 +151,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showTimerDialog() {
-        var dialog: AlertDialog.Builder = AlertDialog.Builder(this)
-        var timerDialogView: View? = LayoutInflater.from(this)?.inflate(R.layout.set_timer_layout, null)
+        val dialog: AlertDialog.Builder = AlertDialog.Builder(this)
+        val timerDialogView: View? = LayoutInflater.from(this)?.inflate(R.layout.set_timer_layout, null)
         dialog.setView(timerDialogView)
 
         llTimerPlayer1 = timerDialogView?.findViewById(R.id.set_timer_layout_ll_player1_timer) as LinearLayout
@@ -157,14 +160,14 @@ class MainActivity : AppCompatActivity() {
 
         tvPlayerOne = timerDialogView?.findViewById(R.id.set_timer_layout_tv_player_one_text) as TextView
 
-        etTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_et_time1) as EditText
+        etTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_et_time1) as TextInputEditText
         tilTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_til_time1) as TextInputLayout
-        etIncrementTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_et_increment_time1) as EditText
+        etIncrementTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_et_increment_time1) as TextInputEditText
         tilIncrementTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_til_increment_time1) as TextInputLayout
 
-        etTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_et_time2) as EditText
+        etTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_et_time2) as TextInputEditText
         tilTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_til_time2) as TextInputLayout
-        etIncrementTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_et_increment_time2) as EditText
+        etIncrementTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_et_increment_time2) as TextInputEditText
         tilIncrementTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_til_increment_time2) as TextInputLayout
 
         rgTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rg_timer) as RadioGroup
@@ -173,7 +176,7 @@ class MainActivity : AppCompatActivity() {
         rbHandicapTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_handicap_timer) as RadioButton
 
         rbNormalTimer?.isChecked = true
-        rgTimer?.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
+        rgTimer?.setOnCheckedChangeListener({ group, checkedId ->
             when (checkedId) {
                 R.id.set_timer_layout_rb_normal_timer -> {
                     tilIncrementTime1?.visibility = View.GONE
@@ -206,17 +209,17 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceType")
     private fun setTimerLength() {
-        var enteredTimeString1: String = etTime1?.text.toString()
-        var enteredIncrementString1: String = etIncrementTime1?.text.toString()
-        var enteredTimeString2: String = etTime2?.text.toString()
-        var enteredIncrementString2: String = etIncrementTime2?.text.toString()
+        val enteredTimeString1: String = etTime1?.text.toString()
+        val enteredIncrementString1: String = etIncrementTime1?.text.toString()
+        val enteredTimeString2: String = etTime2?.text.toString()
+        val enteredIncrementString2: String = etIncrementTime2?.text.toString()
         var enteredTimeLong2: Long = 0 * ONE_SECOND
 
-        if (!TextUtils.isEmpty(enteredTimeString1) && !enteredTimeString1.equals("0")) {
+        if (!TextUtils.isEmpty(enteredTimeString1) && enteredTimeString1 != "0") {
             tilTime1?.isErrorEnabled = false
 
-            var enteredTimeLong1 = enteredTimeString1.toLong() * ONE_MINUTE
-            if (!TextUtils.isEmpty(enteredTimeString2) && !enteredTimeString2.equals("0")) {
+            val enteredTimeLong1 = enteredTimeString1.toLong() * ONE_MINUTE
+            if (!TextUtils.isEmpty(enteredTimeString2) && enteredTimeString2 != "0") {
                 enteredTimeLong2 = enteredTimeString2.toLong() * ONE_MINUTE
             }
 
@@ -246,8 +249,8 @@ class MainActivity : AppCompatActivity() {
         var seconds = (timerLength / ONE_SECOND)
         timeLeft1 = timerLength
         val minutes = seconds / 60
-        seconds = seconds % 60
-        activity_main_chess_timer1.setText("" + String.format("%02d", minutes)
+        seconds %= 60
+        activity_main_chess_timer1.text = (String.format("%02d", minutes)
                 + ":" + String.format("%02d", seconds))
     }
 
@@ -256,8 +259,8 @@ class MainActivity : AppCompatActivity() {
 
         var seconds = (timerLength / ONE_SECOND)
         val minutes = seconds / 60
-        seconds = seconds % 60
-        activity_main_chess_timer2.setText("" + String.format("%02d", minutes)
+        seconds %= 60
+        activity_main_chess_timer2.text = (String.format("%02d", minutes)
                 + ":" + String.format("%02d", seconds))
     }
 
@@ -275,14 +278,14 @@ class MainActivity : AppCompatActivity() {
                 timeLeft1 = millisUntilFinished
                 var seconds = (millisUntilFinished / ONE_SECOND)
                 val minutes = seconds / 60
-                seconds = seconds % 60
-                activity_main_chess_timer1.setText("" + String.format("%02d", minutes)
+                seconds %= 60
+                activity_main_chess_timer1.text = (String.format("%02d", minutes)
                         + ":" + String.format("%02d", seconds))
             }
 
             override fun onFinish() {
-                activity_main_chess_timer1.setTextSize(TEXT_TIME_COMPLETE_SIZE)
-                activity_main_chess_timer1.setText(resources.getString(R.string.player_two_win_by_time))
+                activity_main_chess_timer1.textSize = TEXT_TIME_COMPLETE_SIZE
+                activity_main_chess_timer1.text = resources.getString(R.string.player_two_win_by_time)
                 disableClickOnTimer()
                 stopBlinkAnimation()
             }
@@ -318,15 +321,15 @@ class MainActivity : AppCompatActivity() {
                 timeLeft2 = millisUntilFinished
                 var seconds = (millisUntilFinished / ONE_SECOND)
                 val minutes = seconds / 60
-                seconds = seconds % 60
-                activity_main_chess_timer2.setText("" + String.format("%02d", minutes)
+                seconds %= 60
+                activity_main_chess_timer2.text = (String.format("%02d", minutes)
                         + ":" + String.format("%02d", seconds))
             }
 
 
             override fun onFinish() {
-                activity_main_chess_timer2.setTextSize(TEXT_TIME_COMPLETE_SIZE)
-                activity_main_chess_timer2.setText(resources.getString(R.string.player_one_win_by_time))
+                activity_main_chess_timer2.textSize = TEXT_TIME_COMPLETE_SIZE
+                activity_main_chess_timer2.text = resources.getString(R.string.player_one_win_by_time)
                 disableClickOnTimer()
                 stopBlinkAnimation()
             }
@@ -353,8 +356,8 @@ class MainActivity : AppCompatActivity() {
 //        animation.duration = ANIMATION_DURATION
 //        activity_main_ll_chess_timer2.startAnimation(animation2)
 
-        activity_main_ll_chess_timer1.setLayoutParams(LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1F))
-        activity_main_ll_chess_timer2.setLayoutParams(LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 2F))
+        activity_main_ll_chess_timer1.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1F)
+        activity_main_ll_chess_timer2.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 2F)
     }
 
     private fun timerPause2() {
@@ -382,8 +385,8 @@ class MainActivity : AppCompatActivity() {
 //        animation.duration = ANIMATION_DURATION
 //        activity_main_ll_chess_timer2.startAnimation(animation2)
 
-        activity_main_ll_chess_timer2.setLayoutParams(LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1F))
-        activity_main_ll_chess_timer1.setLayoutParams(LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 2F))
+        activity_main_ll_chess_timer2.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 1F)
+        activity_main_ll_chess_timer1.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 2F)
     }
 
     override fun onStop() {
