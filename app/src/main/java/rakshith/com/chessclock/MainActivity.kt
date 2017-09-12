@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
     var ALERT_TIME: Long = 30 * ONE_SECOND
     var TEXT_TIME_COMPLETE_SIZE = 25.0F
     var ANIMATION_DURATION: Long = 2500
-    var incrementTime: Long = 0 * ONE_SECOND
+    var incrementTime1: Long = 0 * ONE_SECOND
+    var incrementTime2: Long = 0 * ONE_SECOND
 
     var animation: Animation = AlphaAnimation(0.0f, 1.0f)
 
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
     var rgTimer: RadioGroup? = null
     var rbNormalTimer: RadioButton? = null
     var rbIncrementalTimer: RadioButton? = null
+    var rbHandicapTimer: RadioButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -168,6 +170,7 @@ class MainActivity : AppCompatActivity() {
         rgTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rg_timer) as RadioGroup
         rbNormalTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_normal_timer) as RadioButton
         rbIncrementalTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_incremental_timer) as RadioButton
+        rbHandicapTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_handicap_timer) as RadioButton
 
         rbNormalTimer?.isChecked = true
         rgTimer?.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener { group, checkedId ->
@@ -181,6 +184,7 @@ class MainActivity : AppCompatActivity() {
                     hidePlayerTwoTimerView(View.GONE)
                 }
                 R.id.set_timer_layout_rb_handicap_timer -> {
+                    tilIncrementTime1?.visibility = View.VISIBLE
                     hidePlayerTwoTimerView(View.VISIBLE)
                 }
             }
@@ -202,22 +206,36 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceType")
     private fun setTimerLength() {
-        var enteredTimeString: String = etTime1?.text.toString()
-        var enteredIncrementString: String = etIncrementTime1?.text.toString()
+        var enteredTimeString1: String = etTime1?.text.toString()
+        var enteredIncrementString1: String = etIncrementTime1?.text.toString()
+        var enteredTimeString2: String = etTime2?.text.toString()
+        var enteredIncrementString2: String = etIncrementTime2?.text.toString()
+        var enteredTimeLong2: Long = 0 * ONE_SECOND
 
-        if (!TextUtils.isEmpty(enteredTimeString) && !enteredTimeString.equals("0")) {
+        if (!TextUtils.isEmpty(enteredTimeString1) && !enteredTimeString1.equals("0")) {
             tilTime1?.isErrorEnabled = false
 
-            var enteredTimeLong = enteredTimeString.toLong() * ONE_MINUTE
+            var enteredTimeLong1 = enteredTimeString1.toLong() * ONE_MINUTE
+            if (!TextUtils.isEmpty(enteredTimeString2) && !enteredTimeString2.equals("0")) {
+                enteredTimeLong2 = enteredTimeString2.toLong() * ONE_MINUTE
+            }
 
-            setTimer1(enteredTimeLong)
-            setTimer2(enteredTimeLong)
+            if (rbHandicapTimer?.isChecked as Boolean) {
+                setTimer1(enteredTimeLong1)
+                setTimer2(enteredTimeLong2)
+            } else {
+                setTimer1(enteredTimeLong1)
+                setTimer2(enteredTimeLong1)
+            }
 
             activity_main_iv_play.visibility = View.VISIBLE
             activity_main_iv_timer.visibility = View.GONE
 
-            if (!TextUtils.isEmpty(enteredIncrementString)) {
-                incrementTime = enteredIncrementString.toLong() * ONE_SECOND
+            if (!TextUtils.isEmpty(enteredIncrementString1)) {
+                incrementTime1 = enteredIncrementString1.toLong() * ONE_SECOND
+            }
+            if (!TextUtils.isEmpty(enteredIncrementString2)) {
+                incrementTime2 = enteredIncrementString2.toLong() * ONE_SECOND
             }
         } else {
             tilTime1?.setErrorTextAppearance(R.string.enter_time_in_minute)
@@ -320,8 +338,8 @@ class MainActivity : AppCompatActivity() {
         countDownTimer1?.cancel()
         playAlertSound(R.raw.click)
         stopBlinkAnimation()
-        if (incrementTime != 0 * ONE_SECOND)
-            timeLeft1 += incrementTime
+        if (incrementTime1 != 0 * ONE_SECOND)
+            timeLeft1 += incrementTime1
     }
 
     private fun timerResume1() {
@@ -345,8 +363,12 @@ class MainActivity : AppCompatActivity() {
         playAlertSound(R.raw.click)
         stopBlinkAnimation()
 
-        if (incrementTime != 0 * ONE_SECOND)
-            timeLeft2 += incrementTime
+        if (incrementTime2 == null || incrementTime2 == 0 * ONE_SECOND) {
+            if (incrementTime1 != 0 * ONE_SECOND)
+                timeLeft2 += incrementTime1
+        } else {
+            timeLeft2 += incrementTime2
+        }
     }
 
     private fun timerResume2() {
