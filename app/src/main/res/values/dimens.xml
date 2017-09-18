@@ -4,5 +4,6 @@
     <dimen name="size_16sp">16sp</dimen>
     <dimen name="size_100sp">100sp</dimen>
     <dimen name="size_50dp">50dp</dimen>
+    <dimen name="size_5dp">5dp</dimen>
 
 </resources>

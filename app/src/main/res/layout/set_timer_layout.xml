@@ -29,6 +29,12 @@
             android:layout_height="wrap_content"
             android:text="@string/handicap_timer" />
 
+        <RadioButton
+            android:id="@+id/set_timer_layout_rb_hourGlass_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hourglass_timer" />
+
     </RadioGroup>
 
     <LinearLayout

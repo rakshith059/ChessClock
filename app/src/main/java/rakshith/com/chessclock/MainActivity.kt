@@ -10,6 +10,7 @@ import android.support.design.widget.TextInputEditText
 import android.support.design.widget.TextInputLayout
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.Window
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     var ANIMATION_DURATION: Long = 2500
     var incrementTime1: Long = 0 * ONE_SECOND
     var incrementTime2: Long = 0 * ONE_SECOND
+    var totalTime: Long = 0 * ONE_SECOND
 
     var animation: Animation = AlphaAnimation(0.0f, 1.0f)
 
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity() {
     var rbNormalTimer: RadioButton? = null
     var rbIncrementalTimer: RadioButton? = null
     var rbHandicapTimer: RadioButton? = null
+    var rbHourGlassTimer: RadioButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -174,13 +177,13 @@ class MainActivity : AppCompatActivity() {
         rbNormalTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_normal_timer) as RadioButton
         rbIncrementalTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_incremental_timer) as RadioButton
         rbHandicapTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_handicap_timer) as RadioButton
+        rbHourGlassTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_hourGlass_timer) as RadioButton
 
         rbNormalTimer?.isChecked = true
         rgTimer?.setOnCheckedChangeListener({ group, checkedId ->
             when (checkedId) {
                 R.id.set_timer_layout_rb_normal_timer -> {
-                    tilIncrementTime1?.visibility = View.GONE
-                    hidePlayerTwoTimerView(View.GONE)
+                    hidePlayerTwoAndIncrementView()
                 }
                 R.id.set_timer_layout_rb_incremental_timer -> {
                     tilIncrementTime1?.visibility = View.VISIBLE
@@ -189,6 +192,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.set_timer_layout_rb_handicap_timer -> {
                     tilIncrementTime1?.visibility = View.VISIBLE
                     hidePlayerTwoTimerView(View.VISIBLE)
+                }
+                R.id.set_timer_layout_rb_hourGlass_timer -> {
+                    hidePlayerTwoAndIncrementView()
                 }
             }
         })
@@ -200,6 +206,11 @@ class MainActivity : AppCompatActivity() {
                 .setNegativeButton(resources.getString(R.string.cancel), { dialog, which -> dialog.cancel() })
                 .setIcon(resources.getDrawable(R.drawable.ic_timer))
                 .show()
+    }
+
+    private fun hidePlayerTwoAndIncrementView() {
+        tilIncrementTime1?.visibility = View.GONE
+        hidePlayerTwoTimerView(View.GONE)
     }
 
     private fun hidePlayerTwoTimerView(visibility: Int) {
@@ -240,6 +251,8 @@ class MainActivity : AppCompatActivity() {
             if (!TextUtils.isEmpty(enteredIncrementString2)) {
                 incrementTime2 = enteredIncrementString2.toLong() * ONE_SECOND
             }
+
+            totalTime = enteredTimeLong1 * 2
         } else {
             tilTime1?.setErrorTextAppearance(R.string.enter_time_in_minute)
         }
@@ -281,6 +294,18 @@ class MainActivity : AppCompatActivity() {
                 seconds %= 60
                 activity_main_chess_timer1.text = (String.format("%02d", minutes)
                         + ":" + String.format("%02d", seconds))
+
+                if (rbHourGlassTimer?.isChecked as Boolean) {
+                    timeLeft2 = (totalTime - millisUntilFinished) + ONE_SECOND
+
+//                    timeLeft2 = timeLeft2.plus(ONE_SECOND)
+                    Log.d("Rakshith", "timeleft1 == " + totalTime / ONE_SECOND + " - " + "(" + timeLeft1 / ONE_SECOND + ") + 1 = " + timeLeft2 / ONE_SECOND)
+                    var hourGlassSec = (timeLeft2 / ONE_SECOND)
+                    val hourGlassMin = hourGlassSec / 60
+                    hourGlassSec %= 60
+                    activity_main_chess_timer2.text = (String.format("%02d", hourGlassMin)
+                            + ":" + String.format("%02d", hourGlassSec))
+                }
             }
 
             override fun onFinish() {
@@ -324,6 +349,17 @@ class MainActivity : AppCompatActivity() {
                 seconds %= 60
                 activity_main_chess_timer2.text = (String.format("%02d", minutes)
                         + ":" + String.format("%02d", seconds))
+
+                if (rbHourGlassTimer?.isChecked as Boolean) {
+                    timeLeft1 = (totalTime - millisUntilFinished) + ONE_SECOND
+//                    timeLeft1 = timeLeft1.plus(ONE_SECOND)
+                    Log.d("Rakshith", "timeleft2 == " + totalTime / ONE_SECOND + " - " + "(" + timeLeft2 / ONE_SECOND + ") + 1 = " + timeLeft1 / ONE_SECOND)
+                    var hourGlassSec = (timeLeft1 / ONE_SECOND)
+                    val hourGlassMin = hourGlassSec / 60
+                    hourGlassSec %= 60
+                    activity_main_chess_timer1.text = (String.format("%02d", hourGlassMin)
+                            + ":" + String.format("%02d", hourGlassSec))
+                }
             }
 
 
@@ -407,5 +443,10 @@ class MainActivity : AppCompatActivity() {
         else
             timerResume2()
         super.onRestart()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
     }
 }

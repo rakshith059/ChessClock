@@ -17,4 +17,75 @@
     <string name="pause_icon">Pause icon</string>
     <string name="reset_icon">Reset icon</string>
     <string name="splash_image">Image for Splash activity</string>
+    <string name="hourglass_timer">HourGlass timer</string>
+    <string name="title_activity_option">OptionActivity</string>
+    <string name="rules">Chess rules</string>
+
+    <string name="chess_rules">"<div class="division sect2">
+<h2 class="sect2 title"><span style="color: #3366ff;"><span class="title">The Rules of Chess</span></span></h2>
+<p class="para block block-first">Chess is played on a square board of eight rows (called ranks and denoted with numbers 1 to 8) and eight columns (called files and denoted with letters a to h) of squares. The colors of the sixty-four squares alternate between light and dark, and are referred to as "light squares" and "dark squares". The chessboard is placed so that each player has a white square in the near right hand corner, and the pieces are set out as shown in the diagram, with each queen on a square that matches its color.</p>
+<p class="para block">Each player begins the game with sixteen pieces: each player's pieces comprise one king, one queen, two rooks, two bishops, two knights and eight pawns. One player, referred to as White, controls the white pieces and the other player, Black, controls the black pieces; White is always the first player to move. The colors are chosen either by a friendly agreement, by a game of chance or by a tournament director. The players alternate moving one piece at a time (with the exception of castling, when two pieces are moved at the same time). Pieces are moved to either an unoccupied square, or one occupied by an opponent's piece, capturing it and removing it from play. With one exception (en passant), all pieces capture opponent's pieces by moving to the square that the opponent's piece occupies.</p>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #0000ff;" class="title"><span class="label">1.1.</span>King</span></h3>
+<p class="para block block-first">When a king is under direct attack by one (or possibly two) of the opponent's pieces, the player is said to be in check. When in check, only moves that remove the king from attack are permitted. The player must not make any move that would place his king in check. The object of the game is to checkmate the opponent; this occurs when the opponent's king is in check, and there are no moves that remove the king from attack.</p>
+<p class="para block">The king can move only one square horizontally, vertically, or diagonally. Once in the game, each king is allowed to make a special double move, to castle. Castling consists of moving the king two squares towards a rook, then moving the rook onto the square over which the king crossed. Castling is only permissible if all of the following conditions hold:</p>
+<div class="block list itemizedlist">
+<ul class="itemizedlist" compact="compact">
+<li class="li-first"><span class="para">The player must never have moved both the king and the rook involved in castling.</span></li>
+<li><span class="para">There must be no pieces between the king and the rook.</span></li>
+<li><span class="para">The king may not currently be in check, nor may the king pass through squares that are under attack by enemy pieces. As with any move, castling is illegal if it would place the king in check.</span></li>
+<li><span class="para">The king and the rook must be on the same rank (to exclude castling with a promoted pawn).</span></li>
+</ul>
+</div>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">1.2.</span>Rook</span></h3>
+<p class="para block block-first">The rook moves any number of vacant squares vertically or horizontally (it is also involved in the king's special move of castling).</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">1.3.</span>Bishop</span></h3>
+<p class="para block block-first">The bishop moves any number of vacant squares in any direction diagonally. Note that a bishop never changes square color, therefore players speak about "light-squared" or "dark-squared" bishops.</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">1.4.</span>Queen</span></h3>
+<p class="para block block-first">The queen can move any number of vacant squares diagonally, horizontally, or vertically.</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">1.5.</span>Knight</span></h3>
+<p class="para block block-first">The knight can jump over occupied squares and moves two spaces horizontally and one space vertically or vice versa, making an "L" shape. A knight in the middle of the board has eight squares to which it can move. Note that every time a knight moves, it changes square color.</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">1.6.</span>Pawns</span></h3>
+<p class="para block block-first">Pawns have the most complex rules of movement: A pawn can move forward one square, if that square is unoccupied. If it has not moved yet, the pawn has the option of moving two squares forward, if both squares in front of the pawn are unoccupied. A pawn cannot move backward. When such an initial two square advance is made that puts that pawn horizontally adjacent to an opponent's pawn, the opponent's pawn can capture that pawn "en passant" as if it moved forward only one square rather than two, but only on the immediately subsequent move. Pawns are the only pieces that capture differently than they move. They can capture an enemy piece on either of the two spaces adjacent to the space in front of them (i.e., the two squares diagonally in front of them), but cannot move to these spaces if they are vacant. If a pawn advances all the way to its eighth rank, it is then promoted (converted) to a queen, rook, bishop, or knight of the same color. In practice, the pawn is almost always promoted to a queen.</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">1.7.</span>Remaining movement rules</span></h3>
+<p class="para block block-first">With the exception of the knight, pieces cannot jump over each other. One's own pieces ("friendly pieces") cannot be passed if they are in the line of movement, and a friendly piece can never replace another friendly piece. Enemy pieces cannot be passed, but they can be "captured". When a piece is captured (or taken), the attacking piece replaces the enemy piece on its square (en passant being the only exception). The captured piece is thus removed from the game and may not be returned to play for the remainder of the game. The king cannot be captured, only put in check. If a player is unable to get the king out of check, checkmate results, with the loss of the game.</p>
+<p class="para block">Chess games do not have to end in checkmate -- either player may resign if the situation looks hopeless. Games also may end in a draw (tie). A draw can occur in several situations, including draw by agreement, stalemate, threefold repetition of a position, the fifty move rule, or a draw by impossibility of checkmate (usually because of insufficient material to checkmate).</p>
+</div>
+</div>
+<div class="division sect2">
+<h2 class="sect2 title"><span style="color: #3366ff;" class="title"><span class="label">2.</span>Timed Games</span></h2>
+<p class="para block block-first">Games can be played with a time-limit by setting a move time when creating a new game. In timed games each player has a certain amount of time available for deciding which moves to make, and the time remaining for each player decreases only when it is their turn to move.</p>
+</div>
+<div class="division sect2">
+<h2 class="sect2 title"><span style="color: #3366ff;" class="title"><span class="label">3.</span>Game Draw</span></h2>
+<p class="para block block-first">A game that ends without victory for either player. Most drawn games are draws by agreement based upon the rules. The other ways that a game can end in a draw are stalemate, three-fold repetition, the fifty-move rule, and insufficient material. A position is said to be a draw (or a drawn position) if either player can, through correct play, eventually force the game into a position where the game must end in a draw, regardless of the moves made by the other player.</p>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">3.1.</span>Stalemate</span></h3>
+<p class="para block block-first">A stalemate is a position in which the player whose turn it is to move has no legal move and his king is not in check. A stalemate results in an immediate draw.</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">3.2.</span>Threefold repetetion</span></h3>
+<p class="para block block-first">The game is drawn if the same position occurs three times with the same player to move, and with each player having the same set of legal moves each time (the latter includes the right to take en passant and the right to castle).</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">3.3.</span>Fifty move rule</span></h3>
+<p class="para block block-first">The fifty move rule states that the game is drawn after fifty moves from each side without a pawn move or capture.</p>
+</div>
+<div class="division sect3">
+<h3 class="sect3 title"><span style="color: #3366ff;" class="title"><span class="label">3.4.</span>Insufficient material</span></h3>
+<p class="para block block-first">An endgame scenario in which all pawns have been captured, and one side has only its king remaining while the other is down to just a king or a king plus one knight or one bishop. The position is a draw because it is impossible for the dominant side to deliver checkmate regardless of play. Situations where checkmate is possible only if the inferior side blunders are covered by the fifty-move rule.</p>
+</div>
+</div>"</string>
 </resources>
