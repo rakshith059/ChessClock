@@ -25,7 +25,7 @@ class OptionActivity : Activity()/*, View.OnTouchListener */ {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_option)
 
-        rvRecyclerView = findViewById(R.id.activity_option_rv_list) as RecyclerView
+        rvRecyclerView = findViewById<RecyclerView>(R.id.activity_option_rv_list)
 
 //        animate = TranslateAnimation(500f, 100f, 500f, 100f)
 //        animate?.duration = 3000

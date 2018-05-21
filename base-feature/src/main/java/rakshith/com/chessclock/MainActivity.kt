@@ -158,26 +158,26 @@ class MainActivity : AppCompatActivity() {
         val timerDialogView: View? = LayoutInflater.from(this)?.inflate(R.layout.set_timer_layout, null)
         dialog.setView(timerDialogView)
 
-        llTimerPlayer1 = timerDialogView?.findViewById(R.id.set_timer_layout_ll_player1_timer) as LinearLayout
-        llTimerPlayer2 = timerDialogView?.findViewById(R.id.set_timer_layout_ll_player2_timer) as LinearLayout
+        llTimerPlayer1 = timerDialogView?.findViewById<LinearLayout>(R.id.set_timer_layout_ll_player1_timer)
+        llTimerPlayer2 = timerDialogView?.findViewById<LinearLayout>(R.id.set_timer_layout_ll_player2_timer)
 
-        tvPlayerOne = timerDialogView?.findViewById(R.id.set_timer_layout_tv_player_one_text) as TextView
+        tvPlayerOne = timerDialogView?.findViewById<TextView>(R.id.set_timer_layout_tv_player_one_text)
 
-        etTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_et_time1) as TextInputEditText
-        tilTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_til_time1) as TextInputLayout
-        etIncrementTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_et_increment_time1) as TextInputEditText
-        tilIncrementTime1 = timerDialogView?.findViewById(R.id.set_timer_layout_til_increment_time1) as TextInputLayout
+        etTime1 = timerDialogView?.findViewById<TextInputEditText>(R.id.set_timer_layout_et_time1)
+        tilTime1 = timerDialogView?.findViewById<TextInputLayout>(R.id.set_timer_layout_til_time1)
+        etIncrementTime1 = timerDialogView?.findViewById<TextInputEditText>(R.id.set_timer_layout_et_increment_time1)
+        tilIncrementTime1 = timerDialogView?.findViewById<TextInputLayout>(R.id.set_timer_layout_til_increment_time1)
 
-        etTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_et_time2) as TextInputEditText
-        tilTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_til_time2) as TextInputLayout
-        etIncrementTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_et_increment_time2) as TextInputEditText
-        tilIncrementTime2 = timerDialogView?.findViewById(R.id.set_timer_layout_til_increment_time2) as TextInputLayout
+        etTime2 = timerDialogView?.findViewById<TextInputEditText>(R.id.set_timer_layout_et_time2)
+        tilTime2 = timerDialogView?.findViewById<TextInputLayout>(R.id.set_timer_layout_til_time2)
+        etIncrementTime2 = timerDialogView?.findViewById<TextInputEditText>(R.id.set_timer_layout_et_increment_time2)
+        tilIncrementTime2 = timerDialogView?.findViewById<TextInputLayout>(R.id.set_timer_layout_til_increment_time2)
 
-        rgTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rg_timer) as RadioGroup
-        rbNormalTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_normal_timer) as RadioButton
-        rbIncrementalTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_incremental_timer) as RadioButton
-        rbHandicapTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_handicap_timer) as RadioButton
-        rbHourGlassTimer = timerDialogView?.findViewById(R.id.set_timer_layout_rb_hourGlass_timer) as RadioButton
+        rgTimer = timerDialogView?.findViewById<RadioGroup>(R.id.set_timer_layout_rg_timer)
+        rbNormalTimer = timerDialogView?.findViewById<RadioButton>(R.id.set_timer_layout_rb_normal_timer)
+        rbIncrementalTimer = timerDialogView?.findViewById<RadioButton>(R.id.set_timer_layout_rb_incremental_timer)
+        rbHandicapTimer = timerDialogView?.findViewById<RadioButton>(R.id.set_timer_layout_rb_handicap_timer)
+        rbHourGlassTimer = timerDialogView?.findViewById<RadioButton>(R.id.set_timer_layout_rb_hourGlass_timer)
 
         rbNormalTimer?.isChecked = true
         rgTimer?.setOnCheckedChangeListener({ group, checkedId ->

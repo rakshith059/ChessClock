@@ -42,8 +42,8 @@ class OptionAdapter(context: Context, optionList: ArrayList<String>) : RecyclerV
         var cvItemCard: CardView? = null
 
         fun bindItems(option: String) {
-            cvItemCard = itemView?.findViewById(R.id.option_row_cv_item_card) as CardView?
-            rowOptionString = itemView?.findViewById(R.id.option_row_tv_timer_name) as TextView?
+            cvItemCard = itemView?.findViewById<CardView>(R.id.option_row_cv_item_card)
+            rowOptionString = itemView?.findViewById<TextView>(R.id.option_row_tv_timer_name)
             rowOptionString?.setText(option)
         }
     }
